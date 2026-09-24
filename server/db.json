@@ -1,0 +1,367 @@
+{
+  "products": [
+    {
+      "id": "p1",
+      "title": "Classic Cotton Jacket",
+      "price": 110,
+      "description": "A versatile cotton jacket for spring and autumn. Warm, durable and easy to pair with both casual and smart outfits.",
+      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Olive",
+          "hex": "#5B6B3B"
+        },
+        {
+          "name": "Black",
+          "hex": "#1E1E1E"
+        },
+        {
+          "name": "Navy",
+          "hex": "#274060"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "Summer Sundress",
+      "price": 125,
+      "description": "Lightweight linen-blend sundress with a relaxed fit — perfect for warm days, city walks and holidays.",
+      "image": "https://cdn.dummyjson.com/product-images/tops/girl-summer-dress/1.webp",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Sage",
+          "hex": "#A8BCA1"
+        },
+        {
+          "name": "Beige",
+          "hex": "#E6D5B8"
+        },
+        {
+          "name": "White",
+          "hex": "#FAFAFA"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "title": "Minimalist Sneakers",
+      "price": 160,
+      "description": "Clean minimalist sneakers in soft off-white leather. A timeless silhouette that goes with everything in your wardrobe.",
+      "image": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/1.webp",
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "colors": [
+        {
+          "name": "Off-White",
+          "hex": "#F5F5F0"
+        },
+        {
+          "name": "Black",
+          "hex": "#1E1E1E"
+        },
+        {
+          "name": "Gray",
+          "hex": "#B0B0B0"
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "title": "Nike Air Jordan 1",
+      "price": 150,
+      "description": "The iconic Air Jordan 1 basketball sneakers in red and black — bold style on and off the court.",
+      "image": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/1.webp",
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "colors": [
+        {
+          "name": "Red",
+          "hex": "#C0392B"
+        },
+        {
+          "name": "Black",
+          "hex": "#1E1E1E"
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "title": "Puma Future Rider Trainers",
+      "price": 90,
+      "description": "Retro-inspired Puma Future Rider trainers that combine classic looks with all-day comfort.",
+      "image": "https://cdn.dummyjson.com/product-images/mens-shoes/puma-future-rider-trainers/1.webp",
+      "sizes": [
+        "7",
+        "8",
+        "9",
+        "10",
+        "11"
+      ],
+      "colors": [
+        {
+          "name": "Navy",
+          "hex": "#2C3E6B"
+        },
+        {
+          "name": "Red",
+          "hex": "#C0392B"
+        },
+        {
+          "name": "White",
+          "hex": "#F7F7F7"
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "title": "Blue & Black Check Shirt",
+      "price": 55,
+      "description": "Classic check shirt in blue and black. Soft cotton fabric and a regular fit — a true wardrobe essential.",
+      "image": "https://cdn.dummyjson.com/product-images/mens-shirts/blue-&-black-check-shirt/1.webp",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Blue",
+          "hex": "#3A6EA5"
+        },
+        {
+          "name": "Green",
+          "hex": "#4F7942"
+        }
+      ]
+    },
+    {
+      "id": "p7",
+      "title": "Plaid Flannel Shirt",
+      "price": 60,
+      "description": "Cozy plaid flannel shirt with a brushed finish. Perfect for layering when the weather gets cooler.",
+      "image": "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/1.webp",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Red",
+          "hex": "#A93226"
+        },
+        {
+          "name": "Green",
+          "hex": "#1E5631"
+        },
+        {
+          "name": "Navy",
+          "hex": "#274060"
+        }
+      ]
+    },
+    {
+      "id": "p8",
+      "title": "Short Sleeve Shirt",
+      "price": 40,
+      "description": "Breathable short sleeve shirt for warm days. Relaxed fit with a clean, polished look.",
+      "image": "https://cdn.dummyjson.com/product-images/mens-shirts/man-short-sleeve-shirt/1.webp",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "White",
+          "hex": "#F7F7F7"
+        },
+        {
+          "name": "Blue",
+          "hex": "#5DADE2"
+        },
+        {
+          "name": "Pink",
+          "hex": "#F5B7B1"
+        }
+      ]
+    },
+    {
+      "id": "p9",
+      "title": "Leather Corset Set",
+      "price": 90,
+      "description": "Bold two-piece set with a faux leather corset and matching skirt — for a confident, fashion-forward look.",
+      "image": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/1.webp",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Black",
+          "hex": "#1E1E1E"
+        },
+        {
+          "name": "Brown",
+          "hex": "#6E3B2E"
+        },
+        {
+          "name": "Wine",
+          "hex": "#7B2D42"
+        }
+      ]
+    },
+    {
+      "id": "p10",
+      "title": "Black Corset Skirt Set",
+      "price": 80,
+      "description": "Chic corset paired with a classic black skirt. A coordinated set for evenings out and special occasions.",
+      "image": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-with-black-skirt/1.webp",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Black",
+          "hex": "#1E1E1E"
+        },
+        {
+          "name": "Ivory",
+          "hex": "#F3EAD8"
+        }
+      ]
+    },
+    {
+      "id": "p11",
+      "title": "Gray Midi Dress",
+      "price": 55,
+      "description": "Elegant gray midi dress with a flattering silhouette — dressing it up or down has never been easier.",
+      "image": "https://cdn.dummyjson.com/product-images/tops/gray-dress/1.webp",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Gray",
+          "hex": "#9E9E9E"
+        },
+        {
+          "name": "Black",
+          "hex": "#1E1E1E"
+        },
+        {
+          "name": "Navy",
+          "hex": "#274060"
+        }
+      ]
+    },
+    {
+      "id": "p12",
+      "title": "Tartan Dress",
+      "price": 65,
+      "description": "Tartan pattern dress with a timeless feel. A stylish pick for fall and winter looks.",
+      "image": "https://cdn.dummyjson.com/product-images/tops/tartan-dress/1.webp",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Red",
+          "hex": "#A93226"
+        },
+        {
+          "name": "Green",
+          "hex": "#1E5631"
+        }
+      ]
+    },
+    {
+      "id": "p13",
+      "title": "Faux Leather Moto Jacket",
+      "price": 90,
+      "description": "Hooded faux leather moto jacket with zip details — edgy style that works all year round.",
+      "image": "https://fakestoreapi.com/img/81XH0e8fefL._AC_UY879_t.png",
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
+      "colors": [
+        {
+          "name": "Black",
+          "hex": "#1E1E1E"
+        },
+        {
+          "name": "Brown",
+          "hex": "#5D4037"
+        }
+      ]
+    }
+  ],
+  "cartItems": [
+    {
+      "userId": "7fdf458c-7cf1-48fb-9ae2-6c7e49ea625f",
+      "productId": "p4",
+      "size": "9",
+      "color": "Red",
+      "quantity": 1,
+      "id": "fNKP0aTDGqk"
+    },
+    {
+      "userId": "7fdf458c-7cf1-48fb-9ae2-6c7e49ea625f",
+      "productId": "p1",
+      "size": "M",
+      "color": "Olive",
+      "quantity": 1,
+      "id": "6Yipbj5--SE"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
