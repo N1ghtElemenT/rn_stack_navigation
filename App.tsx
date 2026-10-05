@@ -1,20 +1,37 @@
-import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
-import ShopNavigator from './src/navigation/ShopNavigator';
-import { CartProvider } from './src/context/CartContext';
-import { AppTabNavigator } from './src/navigation/AppTabNavigator';
+import "react-native-gesture-handler";
+import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { CartProvider } from "./src/context/CartContext";
+import { FavoritesProvider } from "./src/context/FavoritesContext";
+import DrawerNavigator from "./src/navigation/DrawerNavigator";
 
 export default function App() {
   return (
     <CartProvider>
-      <NavigationContainer>
-        <ShopNavigator />
-        <StatusBar style="auto" />
-      </NavigationContainer>
+      <FavoritesProvider>
+        <NavigationContainer>
+          <DrawerNavigator />
+          <StatusBar style="auto" />
+        </NavigationContainer>
+      </FavoritesProvider>
     </CartProvider>
-    // <NavigationContainer>
-    //   <AppTabNavigator />
-    //   <StatusBar style="auto" />
-    // </NavigationContainer>
   );
 }
+
+// import { NavigationContainer } from "@react-navigation/native";
+// import AppTabNavigator from "./src/navigation/AppTabNavigator";
+// import { DrawerNavigator } from "./src/navigation/DrawerNavigator";
+
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <DrawerNavigator />
+//     </NavigationContainer>
+//   );
+// }
+
+// import BookNavigator from "./src/bookshelf/BookNavigator";
+
+// export default function App() {
+//   return <BookNavigator />;
+// }

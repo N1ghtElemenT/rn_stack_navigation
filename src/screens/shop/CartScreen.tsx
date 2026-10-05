@@ -1,5 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
 import React, { useMemo } from "react";
 import {
   ActivityIndicator,
@@ -13,17 +13,31 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CartItemCard from "../../components/cart/CartItemCard";
 import { useCart } from "../../context/CartContext";
 import useProducts from "../../hooks/useProducts";
-import { ShopStackParamList } from "../../navigation/ShopNavigator";
+import type { ShopTabParamList } from "../../navigation/ShopTabNavigator";
 import { colors, radius, spacing } from "../../theme";
 import { CartLine } from "../../types/shop";
 
-type Props = NativeStackScreenProps<ShopStackParamList, "Cart">;
+type Props = BottomTabScreenProps<ShopTabParamList, "Cart">;
 
 const SHIPPING_PRICE = 5;
 
 export default function CartScreen({ navigation }: Props) {
-  const { items, loading: cartLoading, updateQuantity } = useCart();
+  const {
+    items,
+    loading: cartLoading,
+    error: cartError,
+    reload: reloadCart,
+    updateQuantity,
+  } = useCart();
   const { products, loading: productsLoading } = useProducts();
+
+  const handleBack = () => {
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    } else {
+      navigation.navigate("Home");
+    }
+  };
 
   const lines = useMemo<CartLine[]>(() => {
     return items
@@ -83,12 +97,33 @@ export default function CartScreen({ navigation }: Props) {
     );
   }
 
+  if (cartError && items.length === 0) {
+    return (
+      <SafeAreaView style={styles.centerContainer} edges={["top"]}>
+        <Ionicons
+          name="cloud-offline-outline"
+          size={48}
+          color={colors.textSecondary}
+        />
+        <Text style={styles.centerText}>Could not load your bag</Text>
+        <Text style={styles.errorDetail}>{cartError}</Text>
+        <TouchableOpacity
+          style={styles.retryButton}
+          activeOpacity={0.85}
+          onPress={reloadCart}
+        >
+          <Text style={styles.retryText}>TRY AGAIN</Text>
+        </TouchableOpacity>
+      </SafeAreaView>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.safeArea} edges={["top"]}>
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backButton}
-          onPress={() => navigation.goBack()}
+          onPress={handleBack}
         >
           <Ionicons name="chevron-back" size={26} color={colors.text} />
         </TouchableOpacity>
@@ -132,6 +167,28 @@ const styles = StyleSheet.create({
     marginTop: spacing.md,
     fontSize: 15,
     color: colors.textSecondary,
+  },
+  errorDetail: {
+    marginTop: spacing.xs,
+    fontSize: 13,
+    color: colors.textSecondary,
+    textAlign: "center",
+    paddingHorizontal: spacing.xl,
+  },
+  retryButton: {
+    marginTop: spacing.lg,
+    height: 48,
+    paddingHorizontal: spacing.xl,
+    borderRadius: radius.pill,
+    backgroundColor: colors.primary,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  retryText: {
+    color: colors.white,
+    fontSize: 15,
+    fontWeight: "800",
+    letterSpacing: 1,
   },
   header: {
     flexDirection: "row",

@@ -1,6 +1,9 @@
 import { Ionicons } from "@expo/vector-icons";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { useMemo, useState } from "react";
+import type { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
+import type { DrawerScreenProps } from "@react-navigation/drawer";
+import { CompositeScreenProps, DrawerActions } from "@react-navigation/native";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -13,22 +16,48 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ProductCard from "../../components/ProductCard";
+import { useSearchFocus } from "../../context/SearchFocusContext";
 import { useCart } from "../../context/CartContext";
-import useProducts from "../../hooks/useProducts";
-import { ShopStackParamList } from "../../navigation/ShopNavigator";
+import { useFavorites } from "../../context/FavoritesContext";
+// import useProducts from "../../hooks/useProducts";
+import type { DrawerParamList } from "../../navigation/DrawerNavigator";
+import type { ShopStackParamList } from "../../navigation/ShopNavigator";
+import type { ShopTabParamList } from "../../navigation/ShopTabNavigator";
+import { useProductsStore } from "../../store/useProductsStore";
 import { colors, radius, spacing } from "../../theme";
 import { Product } from "../../types/shop";
 
-type Props = NativeStackScreenProps<ShopStackParamList, "ShopHome">;
+type Props = CompositeScreenProps<
+  NativeStackScreenProps<ShopStackParamList, "ShopHome">,
+  CompositeScreenProps<
+    BottomTabScreenProps<ShopTabParamList>,
+    DrawerScreenProps<DrawerParamList>
+  >
+>;
 
 const HORIZONTAL_PADDING = spacing.lg;
 const COLUMN_GAP = spacing.md;
 
 export default function ShopHomeScreen({ navigation }: Props) {
   const { width: screenWidth } = useWindowDimensions();
-  const { products, loading, error, reload } = useProducts();
+  // const { products, loading, error, reload } = useProducts();
+  const { products, loading, error, reload, load } = useProductsStore();
   const { cartCount } = useCart();
+  const { isFavorite, toggleFavorite } = useFavorites();
   const [search, setSearch] = useState("");
+  const searchRef = useRef<TextInput>(null);
+  const listRef = useRef<FlatList<Product>>(null);
+  const { focusSignal } = useSearchFocus();
+
+  useEffect(() => {
+    load();
+  }, [load]);
+
+  useEffect(() => {
+    if (focusSignal === 0) return;
+    listRef.current?.scrollToOffset({ offset: 0, animated: true });
+    searchRef.current?.focus();
+  }, [focusSignal]);
 
   const cardWidth =
     (screenWidth - HORIZONTAL_PADDING * 2 - COLUMN_GAP) / 2;
@@ -48,7 +77,12 @@ export default function ShopHomeScreen({ navigation }: Props) {
   const renderHeader = () => (
     <View>
       <View style={styles.header}>
-        <View style={styles.headerSide} />
+        <TouchableOpacity
+          style={styles.headerSide}
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+        >
+          <Ionicons name="menu-outline" size={28} color={colors.text} />
+        </TouchableOpacity>
 
         <View style={styles.titleWrapper}>
           <Text style={styles.title}>
@@ -76,6 +110,7 @@ export default function ShopHomeScreen({ navigation }: Props) {
         <View style={styles.searchInputWrapper}>
           <Ionicons name="search" size={18} color={colors.textSecondary} />
           <TextInput
+            ref={searchRef}
             style={styles.searchInput}
             placeholder="Search"
             placeholderTextColor={colors.textSecondary}
@@ -118,6 +153,7 @@ export default function ShopHomeScreen({ navigation }: Props) {
   return (
     <SafeAreaView style={styles.safeArea} edges={["top"]}>
       <FlatList
+        ref={listRef}
         data={filteredProducts}
         keyExtractor={(item) => item.id}
         numColumns={2}
@@ -126,7 +162,13 @@ export default function ShopHomeScreen({ navigation }: Props) {
           <Text style={styles.emptyText}>No products found</Text>
         }
         renderItem={({ item }) => (
-          <ProductCard product={item} width={cardWidth} onPress={openProduct} />
+          <ProductCard
+            product={item}
+            width={cardWidth}
+            onPress={openProduct}
+            isFavorite={isFavorite(item.id)}
+            onToggleFavorite={(product) => toggleFavorite(product.id)}
+          />
         )}
         columnWrapperStyle={{ justifyContent: "space-between" }}
         contentContainerStyle={styles.listContent}

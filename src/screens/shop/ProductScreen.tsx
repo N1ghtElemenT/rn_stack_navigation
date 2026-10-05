@@ -1,5 +1,7 @@
 import { Ionicons } from "@expo/vector-icons";
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import type { BottomTabScreenProps } from "@react-navigation/bottom-tabs";
+import { CompositeScreenProps } from "@react-navigation/native";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
@@ -14,11 +16,15 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getProduct } from "../../api/products";
 import { useCart } from "../../context/CartContext";
-import { ShopStackParamList } from "../../navigation/ShopNavigator";
+import type { ShopStackParamList } from "../../navigation/ShopNavigator";
+import type { ShopTabParamList } from "../../navigation/ShopTabNavigator";
 import { colors, radius, spacing } from "../../theme";
 import { Product } from "../../types/shop";
 
-type Props = NativeStackScreenProps<ShopStackParamList, "Product">;
+type Props = CompositeScreenProps<
+  NativeStackScreenProps<ShopStackParamList, "Product">,
+  BottomTabScreenProps<ShopTabParamList>
+>;
 
 export default function ProductScreen({ route, navigation }: Props) {
   const { productId } = route.params;

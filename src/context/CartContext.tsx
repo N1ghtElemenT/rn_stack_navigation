@@ -18,6 +18,8 @@ interface CartContextType {
   items: CartEntry[];
   cartCount: number;
   loading: boolean;
+  error: string | null;
+  reload: () => void;
   addToCart: (product: Product, size: string, color: string) => Promise<void>;
   updateQuantity: (entryId: string, quantity: number) => Promise<void>;
 }
@@ -26,6 +28,8 @@ const CartContext = createContext<CartContextType>({
   items: [],
   cartCount: 0,
   loading: true,
+  error: null,
+  reload: () => {},
   addToCart: async () => {},
   updateQuantity: async () => {},
 });
@@ -34,23 +38,43 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [userId, setUserId] = useState<string | null>(null);
   const [items, setItems] = useState<CartEntry[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [version, setVersion] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
+
     (async () => {
+      setLoading(true);
+      setError(null);
+
       try {
         const id = await getUserId();
+        if (cancelled) return;
         setUserId(id);
 
-        try {
-          const data = await fetchCart(id);
-          setItems(data);
-        } catch (err) {
-          console.error("Failed to load cart:", err);
+        const data = await fetchCart(id);
+        if (cancelled) return;
+        setItems(data);
+      } catch (err) {
+        console.error("Failed to load cart:", err);
+        if (!cancelled) {
+          setError(
+            err instanceof Error ? err.message : "Failed to load cart",
+          );
         }
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [version]);
+
+  const reload = useCallback(() => {
+    setVersion((v) => v + 1);
   }, []);
 
   const updateQuantity = useCallback(
@@ -131,7 +155,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <CartContext.Provider
-      value={{ items, cartCount, loading, addToCart, updateQuantity }}
+      value={{ items, cartCount, loading, error, reload, addToCart, updateQuantity }}
     >
       {children}
     </CartContext.Provider>

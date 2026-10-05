@@ -26,3 +26,15 @@ export interface CartLine {
   entry: CartEntry;
   product: Product;
 }
+
+export interface FavoriteEntry {
+  id: string;
+  userId: string;
+  productId: string;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  image: string;
+}

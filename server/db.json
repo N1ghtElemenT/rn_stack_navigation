@@ -361,6 +361,76 @@
       "color": "Olive",
       "quantity": 1,
       "id": "6Yipbj5--SE"
+    },
+    {
+      "id": "4814",
+      "userId": "7fdf458c-7cf1-48fb-9ae2-6c7e49ea625f",
+      "productId": "p6",
+      "size": "XS",
+      "color": "Blue",
+      "quantity": 1
+    },
+    {
+      "id": "0c27",
+      "userId": "7fdf458c-7cf1-48fb-9ae2-6c7e49ea625f",
+      "productId": "p1",
+      "size": "M",
+      "color": "Olive",
+      "quantity": 1
+    }
+  ],
+  "categories": [
+    {
+      "id": "c1",
+      "name": "Jackets",
+      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_t.png"
+    },
+    {
+      "id": "c2",
+      "name": "Dresses",
+      "image": "https://cdn.dummyjson.com/product-images/tops/tartan-dress/1.webp"
+    },
+    {
+      "id": "c3",
+      "name": "Shirts",
+      "image": "https://cdn.dummyjson.com/product-images/mens-shirts/man-plaid-shirt/1.webp"
+    },
+    {
+      "id": "c4",
+      "name": "Shoes",
+      "image": "https://cdn.dummyjson.com/product-images/mens-shoes/nike-air-jordan-1-red-and-black/1.webp"
+    },
+    {
+      "id": "c5",
+      "name": "Corsets",
+      "image": "https://cdn.dummyjson.com/product-images/womens-dresses/corset-leather-with-skirt/1.webp"
+    },
+    {
+      "id": "c6",
+      "name": "Sneakers",
+      "image": "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-red/1.webp"
+    }
+  ],
+  "favorites": [
+    {
+      "id": "9099",
+      "userId": "7fdf458c-7cf1-48fb-9ae2-6c7e49ea625f",
+      "productId": "p1"
+    },
+    {
+      "id": "3db0",
+      "userId": "7fdf458c-7cf1-48fb-9ae2-6c7e49ea625f",
+      "productId": "p4"
+    },
+    {
+      "id": "0209",
+      "userId": "7fdf458c-7cf1-48fb-9ae2-6c7e49ea625f",
+      "productId": "p7"
+    },
+    {
+      "id": "ece2",
+      "userId": "7fdf458c-7cf1-48fb-9ae2-6c7e49ea625f",
+      "productId": "p8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
