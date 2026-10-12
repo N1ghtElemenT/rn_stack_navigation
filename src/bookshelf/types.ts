@@ -10,5 +10,6 @@ export interface IBookRow extends IBook {
 export type RootDrawerParamList = {
   "Список книг": undefined;
   "Добавить книгу": undefined;
+  "Редактировать книгу": { bookId: string; title: string; author: string };
   "Добавить автора": undefined;
 };

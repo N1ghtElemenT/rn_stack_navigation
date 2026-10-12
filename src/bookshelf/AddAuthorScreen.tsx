@@ -1,7 +1,7 @@
 import type { DrawerScreenProps } from "@react-navigation/drawer";
 import { useState } from "react";
 import { Alert, Button, Text, TextInput, View } from "react-native";
-import { addAuthor } from "./authorStorage";
+import { bookDatabase } from "./db/BookDatabase";
 import { styles } from "./styles";
 import type { RootDrawerParamList } from "./types";
 
@@ -18,7 +18,7 @@ const AddAuthorScreen = ({ navigation }: Props) => {
     }
 
     try {
-      const created = await addAuthor(authorName);
+      const created = await bookDatabase.addAuthor(authorName);
 
       if (!created) {
         Alert.alert("Ошибка", "Такой автор уже существует");

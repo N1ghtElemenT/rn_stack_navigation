@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import AddAuthorScreen from "./AddAuthorScreen";
 import AddBookScreen from "./AddBookScreen";
 import BookListScreen from "./BookListScreen";
+import EditBookScreen from "./EditBookScreen";
 import { bookDatabase } from "./db/BookDatabase";
 import type { RootDrawerParamList } from "./types";
 
@@ -19,6 +20,11 @@ const BookNavigator = () => {
       <Drawer.Navigator initialRouteName="Список книг">
         <Drawer.Screen name="Список книг" component={BookListScreen} />
         <Drawer.Screen name="Добавить книгу" component={AddBookScreen} />
+        <Drawer.Screen
+          name="Редактировать книгу"
+          component={EditBookScreen}
+          options={{ drawerItemStyle: { display: "none" } }}
+        />
         <Drawer.Screen name="Добавить автора" component={AddAuthorScreen} />
       </Drawer.Navigator>
     </NavigationContainer>

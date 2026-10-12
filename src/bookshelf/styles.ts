@@ -33,6 +33,11 @@ export const styles = StyleSheet.create({
   bookInfo: { 
     flex: 1 
   },
+  bookActions: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 8,
+  },
   bookTitle: { 
     fontSize: 18, 
     fontWeight: "bold" 
